@@ -1,0 +1,9 @@
+@mixin border-radius($radius) {
+  border-radius: $radius;
+}
+
+
+@mixin container-spacing {
+  padding: 10px;
+  margin-bottom: 10px;
+}

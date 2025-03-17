@@ -1,0 +1,27 @@
+@import 'variables';
+@import 'mixins';
+@import 'typography';
+@import 'layout';
+@import 'menu';
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #{$background-light};
+  --foreground: #{$foreground-light};
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #{$background-dark};
+    --foreground: #{$foreground-dark};
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+}

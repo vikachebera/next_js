@@ -1,0 +1,32 @@
+@import "variables";
+.menu {
+  display: flex;
+  gap: 15px;
+  background-color: var(--background-light);
+  padding: 10px 20px;
+  border-bottom: 1px solid $border-color;
+
+  a {
+    text-decoration: none;
+    color: $foreground-light;
+    font-weight: bold;
+
+    &:hover {
+      color: $foreground-dark;
+    }
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .menu {
+    background-color: $background-dark;
+
+    a {
+      color: $foreground-dark;
+
+      &:hover {
+        color: $foreground-light;
+      }
+    }
+  }
+}
