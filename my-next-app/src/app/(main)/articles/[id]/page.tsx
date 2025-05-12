@@ -1,23 +1,15 @@
-import { notFound } from "next/navigation";
-import { Comment } from "./comment";
-import { Article } from "@/app/(main)/articles/[id]/article";
-
-export async function generateStaticParams() {
-    return Array.from({ length: 10 }, (_, i) => ({
-        id: (i + 1).toString(),
-    }));
-}
-
 export default async function ArticlePage({
                                               params,
                                           }: {
-    params: { id: string };
+    params: Promise<{ id: string }>;
 }) {
-    if (!params?.id) {
+    const resolvedParams = await params;
+
+    if (!resolvedParams?.id) {
         return notFound();
     }
 
-    const articleId = Number(params.id);
+    const articleId = Number(resolvedParams.id);
     if (isNaN(articleId)) {
         return notFound();
     }
@@ -49,15 +41,4 @@ export default async function ArticlePage({
             )}
         </div>
     );
-}
-
-async function getArticle(id: number): Promise<Article | null> {
-    const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`);
-    if (!res.ok) return null;
-    return res.json();
-}
-
-async function getComments(id: number): Promise<Comment[]> {
-    const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}/comments`);
-    return res.json();
 }
