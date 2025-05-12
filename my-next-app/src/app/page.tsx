@@ -1,5 +1,4 @@
-import Image from "next/image";
-import Menu from "@/components/Menu/Menu";
+git import Menu from "@/components/Menu/Menu";
 import  'src/styles/main.scss'
 
 export default function Home() {
