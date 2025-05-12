@@ -1,12 +1,13 @@
 import { notFound } from "next/navigation";
-import {Comment} from "./comment";
-import {Article} from "@/app/(main)/articles/[id]/article";
+import { Comment } from "./comment";
+import { Article } from "@/app/(main)/articles/[id]/article";
 
 interface PageProps {
     params: {
         id: string;
     };
 }
+
 async function getArticle(id: number): Promise<Article | null> {
     const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`);
     if (!res.ok) return null;
@@ -18,15 +19,14 @@ async function getComments(id: number): Promise<Comment[]> {
     return res.json();
 }
 
-export async function generateStaticParams(): Promise<PageProps["params"][]> {
+export async function generateStaticParams() {
     return Array.from({ length: 10 }, (_, i) => ({
         id: (i + 1).toString(),
     }));
 }
 
-
-export default async function ArticlePage({ params }:PageProps) {
-    if (!params || !params.id) {
+export default async function ArticlePage({ params }: PageProps) {
+    if (!params?.id) {
         return notFound();
     }
 
@@ -35,10 +35,12 @@ export default async function ArticlePage({ params }:PageProps) {
         return notFound();
     }
 
-    const article = await getArticle(articleId);
-    if (!article) return notFound();
+    const [article, comments] = await Promise.all([
+        getArticle(articleId),
+        getComments(articleId),
+    ]);
 
-    const comments = await getComments(articleId);
+    if (!article) return notFound();
 
     return (
         <div className="article-container">
