@@ -1,4 +1,3 @@
-import { ReactNode } from "react";
 import "../globals.css";
 import Menu from "../../components/Menu/Menu";
 
