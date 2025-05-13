@@ -6,7 +6,7 @@ const prisma = new PrismaClient();
 async function main() {
     const client1 = await prisma.user.create({
         data: {
-            email: 'john234@example.com',
+            email: 'jojndkms4@example.com',
             name: 'John Doe',
             password: '123456',
 

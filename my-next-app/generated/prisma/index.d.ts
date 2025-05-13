@@ -32,7 +32,7 @@ export type Post = $Result.DefaultSelection<Prisma.$PostPayload>
  * ```
  * const prisma = new PrismaClient()
  * // Fetch zero or more Users
- * const users = await prisma.user.findMany()
+ * const users = await prisma.users.findMany()
  * ```
  *
  *
@@ -53,7 +53,7 @@ export class PrismaClient<
    * ```
    * const prisma = new PrismaClient()
    * // Fetch zero or more Users
-   * const users = await prisma.user.findMany()
+   * const users = await prisma.users.findMany()
    * ```
    *
    *
@@ -84,7 +84,7 @@ export class PrismaClient<
    * Executes a prepared raw query and returns the number of affected rows.
    * @example
    * ```
-   * const result = await prisma.$executeRaw`UPDATE User SET cool = ${true} WHERE email = ${'user@email.com'};`
+   * const result = await prisma.$executeRaw`UPDATE User SET cool = ${true} WHERE email = ${'users@email.com'};`
    * ```
    *
    * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/raw-database-access).
@@ -96,7 +96,7 @@ export class PrismaClient<
    * Susceptible to SQL injections, see documentation.
    * @example
    * ```
-   * const result = await prisma.$executeRawUnsafe('UPDATE User SET cool = $1 WHERE email = $2 ;', true, 'user@email.com')
+   * const result = await prisma.$executeRawUnsafe('UPDATE User SET cool = $1 WHERE email = $2 ;', true, 'users@email.com')
    * ```
    *
    * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/raw-database-access).
@@ -107,7 +107,7 @@ export class PrismaClient<
    * Performs a prepared raw query and returns the `SELECT` data.
    * @example
    * ```
-   * const result = await prisma.$queryRaw`SELECT * FROM User WHERE id = ${1} OR email = ${'user@email.com'};`
+   * const result = await prisma.$queryRaw`SELECT * FROM User WHERE id = ${1} OR email = ${'users@email.com'};`
    * ```
    *
    * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/raw-database-access).
@@ -119,7 +119,7 @@ export class PrismaClient<
    * Susceptible to SQL injections, see documentation.
    * @example
    * ```
-   * const result = await prisma.$queryRawUnsafe('SELECT * FROM User WHERE id = $1 OR email = $2;', 1, 'user@email.com')
+   * const result = await prisma.$queryRawUnsafe('SELECT * FROM User WHERE id = $1 OR email = $2;', 1, 'users@email.com')
    * ```
    *
    * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/raw-database-access).
@@ -132,9 +132,9 @@ export class PrismaClient<
    * @example
    * ```
    * const [george, bob, alice] = await prisma.$transaction([
-   *   prisma.user.create({ data: { name: 'George' } }),
-   *   prisma.user.create({ data: { name: 'Bob' } }),
-   *   prisma.user.create({ data: { name: 'Alice' } }),
+   *   prisma.users.create({ data: { name: 'George' } }),
+   *   prisma.users.create({ data: { name: 'Bob' } }),
+   *   prisma.users.create({ data: { name: 'Alice' } }),
    * ])
    * ```
    * 
@@ -150,11 +150,11 @@ export class PrismaClient<
   }>>
 
       /**
-   * `prisma.user`: Exposes CRUD operations for the **User** model.
+   * `prisma.users`: Exposes CRUD operations for the **User** model.
     * Example usage:
     * ```ts
     * // Fetch zero or more Users
-    * const users = await prisma.user.findMany()
+    * const users = await prisma.users.findMany()
     * ```
     */
   get user(): Prisma.UserDelegate<ExtArgs, ClientOptions>;
@@ -854,7 +854,7 @@ export namespace Prisma {
      * ```
      * const prisma = new PrismaClient({
      *   omit: {
-     *     user: {
+     *     users: {
      *       password: true
      *     }
      *   }
@@ -1241,7 +1241,7 @@ export namespace Prisma {
      * @param {UserFindUniqueArgs} args - Arguments to find a User
      * @example
      * // Get one User
-     * const user = await prisma.user.findUnique({
+     * const users = await prisma.users.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
@@ -1255,7 +1255,7 @@ export namespace Prisma {
      * @param {UserFindUniqueOrThrowArgs} args - Arguments to find a User
      * @example
      * // Get one User
-     * const user = await prisma.user.findUniqueOrThrow({
+     * const users = await prisma.users.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
@@ -1270,7 +1270,7 @@ export namespace Prisma {
      * @param {UserFindFirstArgs} args - Arguments to find a User
      * @example
      * // Get one User
-     * const user = await prisma.user.findFirst({
+     * const users = await prisma.users.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
@@ -1286,7 +1286,7 @@ export namespace Prisma {
      * @param {UserFindFirstOrThrowArgs} args - Arguments to find a User
      * @example
      * // Get one User
-     * const user = await prisma.user.findFirstOrThrow({
+     * const users = await prisma.users.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
@@ -1301,13 +1301,13 @@ export namespace Prisma {
      * @param {UserFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
      * // Get all Users
-     * const users = await prisma.user.findMany()
+     * const users = await prisma.users.findMany()
      * 
      * // Get first 10 Users
-     * const users = await prisma.user.findMany({ take: 10 })
+     * const users = await prisma.users.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const userWithIdOnly = await prisma.user.findMany({ select: { id: true } })
+     * const userWithIdOnly = await prisma.users.findMany({ select: { id: true } })
      * 
      */
     findMany<T extends UserFindManyArgs>(args?: SelectSubset<T, UserFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
@@ -1317,7 +1317,7 @@ export namespace Prisma {
      * @param {UserCreateArgs} args - Arguments to create a User.
      * @example
      * // Create one User
-     * const User = await prisma.user.create({
+     * const User = await prisma.users.create({
      *   data: {
      *     // ... data to create a User
      *   }
@@ -1331,7 +1331,7 @@ export namespace Prisma {
      * @param {UserCreateManyArgs} args - Arguments to create many Users.
      * @example
      * // Create many Users
-     * const user = await prisma.user.createMany({
+     * const users = await prisma.users.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
@@ -1345,14 +1345,14 @@ export namespace Prisma {
      * @param {UserCreateManyAndReturnArgs} args - Arguments to create many Users.
      * @example
      * // Create many Users
-     * const user = await prisma.user.createManyAndReturn({
+     * const users = await prisma.users.createManyAndReturn({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      * 
      * // Create many Users and only return the `id`
-     * const userWithIdOnly = await prisma.user.createManyAndReturn({
+     * const userWithIdOnly = await prisma.users.createManyAndReturn({
      *   select: { id: true },
      *   data: [
      *     // ... provide data here
@@ -1369,7 +1369,7 @@ export namespace Prisma {
      * @param {UserDeleteArgs} args - Arguments to delete one User.
      * @example
      * // Delete one User
-     * const User = await prisma.user.delete({
+     * const User = await prisma.users.delete({
      *   where: {
      *     // ... filter to delete one User
      *   }
@@ -1383,7 +1383,7 @@ export namespace Prisma {
      * @param {UserUpdateArgs} args - Arguments to update one User.
      * @example
      * // Update one User
-     * const user = await prisma.user.update({
+     * const users = await prisma.users.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -1400,7 +1400,7 @@ export namespace Prisma {
      * @param {UserDeleteManyArgs} args - Arguments to filter Users to delete.
      * @example
      * // Delete a few Users
-     * const { count } = await prisma.user.deleteMany({
+     * const { count } = await prisma.users.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
@@ -1416,7 +1416,7 @@ export namespace Prisma {
      * @param {UserUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
      * // Update many Users
-     * const user = await prisma.user.updateMany({
+     * const users = await prisma.users.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -1433,7 +1433,7 @@ export namespace Prisma {
      * @param {UserUpdateManyAndReturnArgs} args - Arguments to update many Users.
      * @example
      * // Update many Users
-     * const user = await prisma.user.updateManyAndReturn({
+     * const users = await prisma.users.updateManyAndReturn({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -1443,7 +1443,7 @@ export namespace Prisma {
      * })
      * 
      * // Update zero or more Users and only return the `id`
-     * const userWithIdOnly = await prisma.user.updateManyAndReturn({
+     * const userWithIdOnly = await prisma.users.updateManyAndReturn({
      *   select: { id: true },
      *   where: {
      *     // ... provide filter here
@@ -1463,7 +1463,7 @@ export namespace Prisma {
      * @param {UserUpsertArgs} args - Arguments to update or create a User.
      * @example
      * // Update or create a User
-     * const user = await prisma.user.upsert({
+     * const users = await prisma.users.upsert({
      *   create: {
      *     // ... data to create a User
      *   },
@@ -1485,7 +1485,7 @@ export namespace Prisma {
      * @param {UserCountArgs} args - Arguments to filter Users to count.
      * @example
      * // Count the number of Users
-     * const count = await prisma.user.count({
+     * const count = await prisma.users.count({
      *   where: {
      *     // ... the filter for the Users we want to count
      *   }
@@ -1510,7 +1510,7 @@ export namespace Prisma {
      * // Ordered by age ascending
      * // Where email contains prisma.io
      * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
+     * const aggregations = await prisma.users.aggregate({
      *   _avg: {
      *     age: true,
      *   },
@@ -1534,7 +1534,7 @@ export namespace Prisma {
      * @param {UserGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
+     * const result = await prisma.users.groupBy({
      *   by: ['city', 'createdAt'],
      *   orderBy: {
      *     createdAt: true
@@ -2633,7 +2633,7 @@ export namespace Prisma {
      * // Ordered by age ascending
      * // Where email contains prisma.io
      * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
+     * const aggregations = await prisma.users.aggregate({
      *   _avg: {
      *     age: true,
      *   },
@@ -2657,7 +2657,7 @@ export namespace Prisma {
      * @param {PostGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
+     * const result = await prisma.users.groupBy({
      *   by: ['city', 'createdAt'],
      *   orderBy: {
      *     createdAt: true
