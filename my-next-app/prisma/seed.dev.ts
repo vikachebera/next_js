@@ -1,4 +1,4 @@
-import {PrismaClient} from "@prisma/client";
+import {PrismaClient} from "../generate/client-dev";
 
 
 const prisma = new PrismaClient();
@@ -10,10 +10,12 @@ async function main() {
             name: 'John Doe',
             posts: {
                 create: {
-                    title: 'John',
-                    content: "This is my first post",
-                    published: true,
-                }
+                    title: 'first message',
+                    content: 'John Doe',
+                    published: true
+
+                },
+
             }
         }
     });
@@ -21,18 +23,20 @@ async function main() {
     const client2 = await prisma.user.create({  // Додано await
         data: {
             email: 'jane@example.com',
-            name: 'Jane Doe',
+            name: 'Bob Doe',
             posts: {
                 create: {
-                    title: 'My second post',
-                    content: 'This is another post',
-                    published: false,
-                }
+                    title: 'second message',
+                    content: 'bob Doe',
+                    published: false
+
+                },
+
             }
         }
     });
 
-    console.log({ client1, client2 });
+    console.log({client1, client2});
 }
 
 main()

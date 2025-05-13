@@ -1,0 +1,16 @@
+generator client {
+  provider = "prisma-client-js"
+  output = "../generate/client-prod"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_PROD_URL")
+}
+
+model User {
+  id  Int @id@default(autoincrement())
+  name String
+  password String
+  email String  @unique
+}

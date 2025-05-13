@@ -6,7 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "generate:dev": "prisma generate --schema=prisma/schema.dev.prisma",
+    "generate:prod": "prisma generate --schema=prisma/schema.prod.prisma",
+    "seed:dev": "ts-node seed/seed-dev.ts",
+    "seed:prod": "ts-node seed/seed-prod.ts"
   },
   "prisma": {
     "seed": "ts-node prisma/seed.ts"
