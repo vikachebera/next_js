@@ -9,7 +9,7 @@ const menuItems = [
     { href: "/articles/create", label: "Create Article" },
     { href: "/profile/settings", label: "Profile Settings" },
     { href: "/profile/security", label: "Profile Security" },
-    { href: "/users", label: "Profile User" },
+    { href: "/users", label: "Table of users" },
 ];
 
 
