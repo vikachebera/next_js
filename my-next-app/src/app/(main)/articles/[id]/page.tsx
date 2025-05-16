@@ -1,12 +1,13 @@
-import { notFound } from "next/navigation";
+import {notFound} from "next/navigation";
 import {Comment} from "./comment";
 import {Article} from "@/app/(main)/articles/[id]/article";
 
-interface PageProps {
+type PageProps = {
     params: {
         id: string;
     };
 }
+
 async function getArticle(id: number): Promise<Article | null> {
     const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`);
     if (!res.ok) return null;
@@ -19,13 +20,13 @@ async function getComments(id: number): Promise<Comment[]> {
 }
 
 export async function generateStaticParams(): Promise<PageProps["params"][]> {
-    return Array.from({ length: 10 }, (_, i) => ({
+    return Array.from({length: 10}, (_, i) => ({
         id: (i + 1).toString(),
     }));
 }
 
 
-export default async function ArticlePage({ params }:PageProps) {
+export default async function ArticlePage({params}: PageProps) {
     if (!params || !params.id) {
         return notFound();
     }
@@ -49,8 +50,8 @@ export default async function ArticlePage({ params }:PageProps) {
             {comments.length > 0 ? (
                 <ul>
                     {comments.map((comment) => (
-                        <li key={comment.id} style={{ marginBottom: "10px" }}>
-                            <strong>{comment.name}</strong> ({comment.email}):<br />
+                        <li key={comment.id} style={{marginBottom: "10px"}}>
+                            <strong>{comment.name}</strong> ({comment.email}):<br/>
                             {comment.body}
                         </li>
                     ))}
