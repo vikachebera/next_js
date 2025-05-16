@@ -2,7 +2,6 @@ import Menu from "@/components/Menu/Menu";
 import 'src/styles/main.scss'
 import { authOption } from "@/app/api/auth/[...nextauth]/route";
 import { getServerSession } from "next-auth";
-import {getUserSession} from "@/app/lib/session";
 
 export default async function Home() {
     const session = await getServerSession(authOption);

@@ -47,7 +47,7 @@ export default function UserPage() {
                         {users.map((user) => (
                             <li key={user.id}
                                 className="border border-gray-200 p-4 rounded-lg hover:bg-gray-50 transition-colors">
-                                <p><strong className="font-medium">Ім'я:</strong> {user.name}</p>
+                                <p><strong className="font-medium">Ім&#39;я:</strong> {user.name}</p>
                                 <p><strong className="font-medium">Email:</strong> {user.email}</p>
                             </li>
                         ))}

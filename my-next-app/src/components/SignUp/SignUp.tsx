@@ -14,7 +14,7 @@ export default function SignUpForm() {
             <div className="grid grid-cols-1 gap-6">
                 <div>
                     <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
-                        Ім'я <span className="text-red-500">*</span>
+                        Ім&#39;я <span className="text-red-500">*</span>
                     </label>
                     <input
                         type="text"
