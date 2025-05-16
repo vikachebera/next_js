@@ -2,7 +2,7 @@
 import {PrismaClient} from '@prisma/client';
 import bcrypt from 'bcrypt';
 import {redirect} from "next/navigation";
-import { FormState } from '@/app/lib/definitions';
+import {FormState} from '@/app/lib/definitions';
 
 
 export async function signup(state: FormState, formData: FormData) {
@@ -27,10 +27,10 @@ export async function signup(state: FormState, formData: FormData) {
     }
 
     if (Object.keys(errors).length > 0) {
-        return { errors };
+        return {errors};
     }
 
-    const existingUser = await prisma.user.findUnique({ where: { email } });
+    const existingUser = await prisma.user.findUnique({where: {email}});
     if (existingUser) {
         return {
             errors: {
@@ -51,3 +51,29 @@ export async function signup(state: FormState, formData: FormData) {
     redirect('/users');
 }
 
+export async function signin(state: FormState, formData: FormData) {
+    const prisma = new PrismaClient();
+    const errors: FormState['errors'] = {};
+
+
+    const email = formData.get('email') as string;
+    const password = formData.get('password') as string;
+    if (!email || !email.includes('@')) {
+        errors.email = ['Некоректний email'];
+    }
+    if (Object.keys(errors).length > 0) {
+        return {errors};
+    }
+
+    const user = await prisma.user.findUnique({where: {email}});
+    if (!user) {
+        return {errors: {email: ['Користувача не знайдено']}};
+    }
+    const passwordMatch = await bcrypt.compare(password, user.password);
+
+    if (!passwordMatch) {
+        return { errors: { password: ['Невірний пароль'] } };
+    }
+
+    redirect('/');
+}

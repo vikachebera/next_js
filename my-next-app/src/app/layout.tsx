@@ -1,5 +1,6 @@
 "use client";
 import CssBaseline from '@mui/material/CssBaseline';
+import Header from "@/components/Header/Header";
 
 
 
@@ -14,7 +15,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </head>
         <body>
             <CssBaseline />
-                {children}
+            <Header/>
+            {children}
         </body>
         </html>
     );

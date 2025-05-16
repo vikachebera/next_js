@@ -833,7 +833,7 @@ declare type Document_2 = ReadonlyDeep_2<{
 }>;
 
 /**
- * A generic driver adapter factory that allows the users to instantiate a
+ * A generic driver adapter factory that allows the user to instantiate a
  * driver adapter. The query and result types are specific to the adapter.
  */
 declare interface DriverAdapterFactory<Query, Result> extends AdapterInfo {
@@ -1940,7 +1940,7 @@ declare type InternalRequestParams = {
     /**
      * The original client method being called.
      * Even though the rootField / operation can be changed,
-     * this method stays as it is, as it's what the users's
+     * this method stays as it is, as it's what the user's
      * code looks like
      */
     clientMethod: string;
@@ -1953,7 +1953,7 @@ declare type InternalRequestParams = {
     transaction?: PrismaPromiseTransaction;
     unpacker?: Unpacker;
     otelParentCtx?: Context;
-    /** Used to "desugar" a users input into an "expanded" one */
+    /** Used to "desugar" a user input into an "expanded" one */
     argsMapper?: (args?: UserArgs_2) => UserArgs_2;
     /** Used to convert args for middleware and back */
     middlewareArgsMapper?: MiddlewareArgsMapper<unknown, unknown>;
@@ -3590,7 +3590,7 @@ export declare type UnwrapTuple<Tuple extends readonly unknown[]> = {
 };
 
 /**
- * Input that flows from the users into the Client.
+ * Input that flows from the user into the Client.
  */
 declare type UserArgs_2 = any;
 

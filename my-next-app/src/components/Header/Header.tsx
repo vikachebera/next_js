@@ -12,7 +12,7 @@ export default function Header() {
                     Sign up
                 </Link>
                 <Link
-                    href="#"
+                    href="/signin"
                     className="px-4 py-2 rounded-custom transition-colors duration-300 text-white bg-blue-400"
                 >
                     Sign in
