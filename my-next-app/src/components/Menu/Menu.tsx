@@ -16,7 +16,7 @@ const menuItems = [
  const Menu=()=>{
     const pathname = usePathname();
     return (
-        <nav className="flex flex-col w-1/5 h-dvh gap-custom-2 p-custom-2 bg-gray-100 dark:bg-dark transition-all duration-500 ease-in-out">
+        <nav className="flex flex-col w-full h-dvh gap-custom-2 p-custom-2 bg-gray-100 dark:bg-dark transition-all duration-500 ease-in-out">
             {menuItems.map((item) => (
                 <Link
                     key={item.href}

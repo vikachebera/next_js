@@ -1,18 +1,7 @@
-import {User}  from 'next-auth'
-import {getServerSession} from 'next-auth'
+import { getServerSession } from "next-auth";
+import { authOption } from "@/app/api/auth/[...nextauth]/route";
 
-export const session = async ({ session, token }: any) => {
-    session.user.id = token.id
-    session.user.tenant = token.tenant
-    return session
-}
-
-export const getUserSession = async (): Promise<User> => {
-    const authUserSession = await getServerSession({
-        callbacks: {
-            session
-        }
-    })
-    if (!authUserSession) throw new Error('unauthorized')
-    return authUserSession.user
-}
+export const getUserSession = async () => {
+    const session = await getServerSession(authOption);
+    return session?.user || null;
+};
