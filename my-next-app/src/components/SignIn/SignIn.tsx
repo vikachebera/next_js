@@ -75,6 +75,19 @@ export default function SignIn() {
                     className="mr-2"
                 />
                 Sign in with Google
+            </Link>
+            <Link
+                href="/api/auth/signin/github"
+                className="mt-6 flex items-center justify-center bg-white border border-gray-300 rounded-full w-1/5 py-2 px-4 shadow hover:shadow-md transition text-sm"
+            >
+                <img
+                    // src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"
+                    alt="GitHub Logo"
+                    width={20}
+                    height={20}
+                    className="mr-2"
+                />
+                Sign in with GitHub
             </Link>        </div>
     )
 }
